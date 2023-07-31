@@ -1,0 +1,40 @@
+<div class="main__body">
+  <app-left-sidebar/>
+
+  <!-- feed starts -->
+  <div class="feed">
+    <app-post-sender/>
+    <!-- message sender ends -->
+
+    <!-- post starts -->
+    <app-posts/>
+  </div>
+
+  <app-right-sidebar/>
+  <!-- feed ends -->
+
+  <div style="flex: 0.33" class="widgets">
+    <div
+      class="fb-page"
+      data-href="https://www.facebook.com/facebook"
+      data-tabs="timeline"
+      data-width="500"
+      data-height="1000"
+      data-small-header="false"
+      data-adapt-container-width="true"
+      data-hide-cover="false"
+      data-show-facepile="true"
+    >
+    </div>
+  </div>
+</div>
+<!-- main body ends -->
+
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
+  nonce="zUxEq08J"
+></script>

@@ -1,0 +1,20 @@
+<div class="container">
+<!--  <div class="title">Login</div>-->
+  <div class="content">
+    <form action="#">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text" placeholder="Enter your email" required #inputEmail>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="text" placeholder="Enter your email" required #inputPassword>
+        </div>
+      </div>
+      <div class="button">
+        <input (click)="getData($event, inputEmail, inputPassword)" type="submit" value="Login">
+      </div>
+    </form>
+  </div>
+</div>

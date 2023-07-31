@@ -1,0 +1,31 @@
+.user__avatar {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.rightSidebar {
+  padding: 25px 10px;
+  flex: 0.33;
+}
+
+.rightSidebarRow {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rightSidebarRow:hover {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.rightSidebarRow h4 {
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.rightSidebarRow .material-icons {
+  font-size: xx-large;
+  color: #2e81f4;
+}
