@@ -14,7 +14,7 @@ import {SidebarsModule} from "./sidebars/sidebars.module";
     PostSenderComponent
   ],
   exports: [
-    PostsComponent, HomeComponent, PostSenderComponent
+    PostsComponent, HomeComponent, PostSenderComponent, SidebarsModule
   ],
   imports: [
     CommonModule,

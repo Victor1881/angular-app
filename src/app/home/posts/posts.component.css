@@ -4,16 +4,29 @@
 }
 
 .post {
-  width: 100%;
-  margin-top: 15px;
+  width: 45vmax;
+  margin-top: 35px;
   border-radius: 15px;
   background-color: white;
   box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.post__image {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  margin-top: -25px;
 }
 
 .post__image img {
   width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
+
 
 .post__top {
   display: flex;
@@ -36,7 +49,7 @@
 }
 
 .post__bottom {
-  margin-top: 10px;
+  margin-top: -30px;
   margin-bottom: 10px;
   padding: 15px 25px;
 }
@@ -67,3 +80,5 @@
   background-color: #eff2f5;
   border-radius: 10px;
 }
+
+

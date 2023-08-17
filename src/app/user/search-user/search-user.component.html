@@ -1,0 +1,35 @@
+<div class="messageSender" *ngFor="let user of users">
+  <div class="messageSender__top">
+    <div class="user-info">
+      <img class="user-photo" src="{{user?.image}}">
+      <span class="user-name">{{user?.firstName}} {{user?.lastName}}</span>
+    </div>
+  </div>
+
+
+  <div class="friend"  *ngIf="friendIds && friendIds.includes(user && user._id); then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div class="friend">
+      <button>Friends</button>
+    </div>
+  </ng-template>
+  <ng-template #elseBlock>
+    <div class="friend" *ngIf="friendRequest && friendRequest.sentTo.includes(user && user._id); then newBlock else newelseBlock">
+<!--      <button (click)="makeRequest(user?._id)">Add</button>-->
+    </div>
+    <ng-template #newBlock>
+      <div class="friend">
+        <button>Sent</button>
+      </div>
+    </ng-template>
+    <ng-template #newelseBlock>
+      <div class="friend">
+        <button (click)="makeRequest(user?._id)">Add</button>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+
+
+

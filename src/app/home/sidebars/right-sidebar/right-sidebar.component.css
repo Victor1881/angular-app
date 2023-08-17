@@ -29,3 +29,115 @@
   font-size: xx-large;
   color: #2e81f4;
 }
+
+:root {
+  --chat-width: 300px;
+}
+
+/* Use the position: fixed property to make the chat boxes stay in place */
+.chat-box {
+  width: var(--chat-width);
+  height: 350px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  position: fixed;
+  bottom: 60px;
+}
+
+/* Use a calculation to set the right property for each chat box based on its index */
+.chat-box:nth-child(4n+1) {
+  right: calc(var(--chat-width) * 0 + 20px);
+}
+
+.chat-box:nth-child(4n+2) {
+  right: calc(var(--chat-width) * 1 + 40px);
+}
+
+.chat-box:nth-child(4n+3) {
+  right: calc(var(--chat-width) * 2 + 60px);
+}
+
+.chat-box:nth-child(4n+4) {
+  right: calc(var(--chat-width) * 3 + 80px);
+}
+
+/* Other styles for your chat boxes */
+.chat-header {
+  height: 50px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.chat-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.chat-status {
+  font-size: 14px;
+  color: green;
+  margin-left: 10px;
+}
+
+.chat-close {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: #333;
+  margin-left: auto;}
+
+.chat-body {
+  height: calc(100% - 100px);
+  padding: 10px;
+  overflow-y: scroll;
+  background-color: #f8f8f8; }
+
+.chat-message {
+  width: fit-content;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 16px; }
+
+.chat-message-left {
+  background-color: #e0e0e0;
+  align-self: flex-start;
+}
+
+.chat-message-right {
+  background-color: #d0d0ff;
+  align-self: flex-end;
+}
+
+.chat-footer {
+  height: 50px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.chat-input {
+  width: calc(100% - 60px);
+  height: 30px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.chat-send {
+  width: 50px;
+  height: 30px;
+  border: none;
+  background-color: #333;
+  font-size: 16px;
+  color: #fff;
+  margin-left: 10px;
+}

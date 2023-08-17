@@ -7,7 +7,11 @@ import {Observable} from "rxjs";
 })
 
 export class ApiService {
+  isAuthenticated: boolean = false
   constructor(private http: HttpClient) {
+    this.checkAuthentication().subscribe((response: any) => {
+      this.isAuthenticated = response?.authenticated || false;
+    });
   }
 
   checkAuthentication(): Observable<string> {

@@ -11,6 +11,8 @@ export class AuthActivate implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
     return this.apiService.checkAuthentication().pipe(
       map((response: any) => {
+        // debugger
+        console.log(response)
         if (response?.authenticated === true) {
           return true;
         } else {

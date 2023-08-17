@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {ApiService} from "../../api/api.service";
-import {catchError, map, of} from "rxjs";
+import {User} from "../../types/user";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {catchError, map, of} from "rxjs";
 })
 export class LoginComponent {
 
-  constructor(private http: HttpClient,  private router: Router, private apiService: ApiService) {}
+  constructor(private http: HttpClient,  private router: Router, private apiService: ApiService, private userService: UserService) {}
 
   getData(e: Event, email: HTMLInputElement, password: HTMLInputElement) {
     e.preventDefault();
@@ -20,7 +21,11 @@ export class LoginComponent {
 
     // debugger
     this.http.post<any>('http://localhost:3000/login', data, { headers, withCredentials: true }).subscribe(
-      (response) => {
+      (obj) => {
+        if (Object.keys(obj).length === 0){
+          return
+        }
+        this.apiService.isAuthenticated = true
         this.router.navigate(['/'])
       },
       (error) => {

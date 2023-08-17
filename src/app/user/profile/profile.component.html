@@ -1,0 +1,196 @@
+<body>
+<div id="profile-upper">
+  <div id="profile-banner-image">
+    <img [src]="user?.coverPhoto" *ngIf="user?.coverPhoto">
+  </div>
+  <div id="profile-d">
+        <div class="modal-backdrop" style="display: none"></div>
+    <div id="profile-pic">
+      <img src="{{user?.image}}">
+    </div>
+    <div id="u-name">{{user?.firstName}} {{user?.lastName}}</div>
+    <div class="tb" id="m-btns">
+      <div class="td">
+        <div class="m-btn"><i class="material-icons">format_list_bulleted</i><span>Activity log</span></div>
+      </div>
+      <div class="td">
+        <div class="m-btn"><i class="material-icons">lock</i><span>Privacy</span></div>
+      </div>
+    </div>
+    <div id="edit-profile" (click)="fileInput.click()">
+      <i class="material-icons" style="color: black">camera_alt</i>
+    </div>
+    <input #fileInput type="file" hidden (change)="getUserCoverPage($event)">
+  </div>
+  <div id="black-grd"></div>
+</div>
+
+<div class="td" id="m-col">
+  <div class="m-mrg" id="p-tabs">
+    <div class="modal-backdrop" style="display: none"></div>
+    <div class="tb">
+      <div class="td">
+        <div class="tb" id="p-tabs-m">
+          <div class="td active"><i class="material-icons" (click)="deleteProfile()">delete</i><span>Delete Profile</span></div>
+          <div class="td"><i class="material-icons">people</i><span>FRIENDS</span></div>
+          <div class="td"><i class="material-icons">photo</i><span>PHOTOS</span></div>
+          <div class="td"><i class="material-icons">explore</i><span>ABOUT</span></div>
+          <div class="td"><i class="material-icons">archive</i><span>ARCHIVE</span></div>
+        </div>
+      </div>
+      <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div>
+    </div>
+  </div>
+  </div>
+
+  <div class="main__body">
+    <div class="feed">
+
+      <div class="messageSender">
+        <div class="messageSender__top">
+          <img
+            class="user__avatar"
+            src="{{user?.image}}"
+            alt=""
+          />
+          <form>
+            <input (click)="openModal()" class="messageSender__input" placeholder="What's on your mind?" type="text" />
+          </form>
+        </div>
+
+        <div class="messageSender__bottom">
+          <div class="messageSender__option">
+            <span style="color: red" class="material-icons"> videocam </span>
+            <h3>Live</h3>
+          </div>
+
+          <div class="messageSender__option" (click)="openModal()">
+            <span style="color: green" class="material-icons"> photo_library </span>
+            <h3>Photo</h3>
+          </div>
+
+          <div class="messageSender__option">
+            <span style="color: orange" class="material-icons"> insert_emoticon </span>
+            <h3>Feeling</h3>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- message sender ends -->
+      <div class="modal" id="myModal" style="display: none">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Create Post</h4>
+              <button class="close-btn" (click)="closeModal()">X</button>
+            </div>
+            <div class="modal-body">
+              <div class="user-info">
+                <img class="user-photo" src="{{user?.image}}">
+                <span class="user-name">{{user?.firstName}} {{user?.lastName}}</span>
+              </div>
+              <input #postMessage type="textarea" id="message" placeholder="What's on your mind?">
+            </div>
+            <div class="modal-body">
+              <div style="cursor: pointer">
+                <i class="material-icons" style="color: black" (click)="fileInput2.click()">camera_alt</i>
+                <button class="close-btn-2" (click)="removeImage()">X</button>
+              </div>
+              <input #fileInput2 type="file" hidden (change)="showPictureInModal($event)">
+            </div>
+            <div class="container">
+              <img class="image" src="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="getPostData(fileInput2, postMessage)">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- post starts -->
+      <div class="post" *ngFor="let post of posts">
+        <div class="post__top">
+          <img
+            class="user__avatar post__avatar"
+            src="{{user?.image}}"
+            alt=""
+          />
+          <div class="post__topInfo">
+            <h3>{{user?.firstName}} {{user?.lastName}}</h3>
+            <p>25 April at 20:30</p>
+          </div>
+          <div class="edit-button" (click)="editPost(post)">
+            <i style="cursor: default" class="material-icons">edit</i>
+          </div>
+        </div>
+
+        <div class="post__bottom">
+          <p>{{post?.post}}</p>
+        </div>
+
+        <div class="post__image" *ngIf="post?.image">
+          <img
+            src="{{post?.image}}"
+            alt=""
+          />
+        </div>
+
+        <div class="post__options">
+          <div class="post__option">
+            <span class="material-icons"> thumb_up </span>
+            <p>Like</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons"> chat_bubble_outline </span>
+            <p>Comment</p>
+          </div>
+
+          <div class="post__option">
+            <span class="material-icons"> near_me </span>
+            <p>Share</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- feed ends -->
+
+    <div style="flex: 0.33" class="widgets">
+      <div
+        class="fb-page"
+        data-href="https://www.facebook.com/facebook"
+        data-tabs="timeline"
+        data-width="500"
+        data-height="1000"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true"
+      >
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="modal-backdrop" id="myBackdrop" style="display: none"></div>
+</body>
+
+
+<!-- main body ends -->
+
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
+  nonce="zUxEq08J"
+></script>
+
+
+

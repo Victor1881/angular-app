@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {AuthActivate} from "./guards/auth-active";
+import {HeaderComponent} from "./header/header.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/'},
-  {path: '', component: HomeComponent, canActivate: [AuthActivate],},
+  {path: '', component: HomeComponent, canActivate: [AuthActivate]},
 ];
 
 @NgModule({

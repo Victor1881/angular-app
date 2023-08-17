@@ -69,6 +69,7 @@
 
 .main__body {
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to a new line if needed */
 }
 
 body {
@@ -77,16 +78,34 @@ body {
 
 .feed {
   flex: 1;
-  padding: 30px 100px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+
 .sidebar {
   padding: 25px 10px;
   flex: 0.33;
+}
+
+.widgets {
+  flex: 0.33;
+  padding: 30px;
+}
+
+.left-sidebar {
+  flex: 0.5; /* Adjust the width as needed */
+  display: none; /* Hide it by default */
+}
+
+/* Show the left sidebar on larger screens */
+@media screen and (min-width: 900px) {
+  .left-sidebar {
+    display: block; /* Show it on larger screens */
+  }
 }
 
 
